@@ -8,6 +8,7 @@ const AppReducer = (state, action) => {
     case 'SET_SELECTED_WORD':
       return {
         ...state,
+        playable: true,
         selectedWord: action.payload
       }
     case 'SET_CORRECT_LETTERS':
@@ -22,6 +23,7 @@ const AppReducer = (state, action) => {
       }
     case 'RESET_GAME':
       return {
+        playable: false,
         selectedWord: {},
         correctLetters: [],
         wrongLetters: [],

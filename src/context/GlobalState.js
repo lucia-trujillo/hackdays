@@ -7,6 +7,7 @@ import randomWords from 'random-words'
 
 // Initial state
 const initialState = {
+  playable: false,
   selectedWord: {},
   correctLetters: [],
   wrongLetters: [],
@@ -40,15 +41,18 @@ export const GlobalProvider = ({ children }) => {
   }
 
   const setSelectedWord = useCallback(() => {
-    const client = Owlbot(process.env.REACT_APP_OWLBOT_TOKEN)
-    const word = randomWords()
-    client.define(word).then((result) => {
-      dispatch({ 
-        type: 'SET_SELECTED_WORD',
-        payload: result
+    console.log(state.playable)
+    if(state.playable === false) {
+      const client = Owlbot(process.env.REACT_APP_OWLBOT_TOKEN)
+      const word = randomWords()
+      client.define(word).then((result) => {
+        dispatch({ 
+          type: 'SET_SELECTED_WORD',
+          payload: result
+        })
       })
-    })
-  }, [])
+    } 
+  }, [state.playable])
 
   const setCorrectLetters = (letter) => {
     dispatch({ 
@@ -66,6 +70,7 @@ export const GlobalProvider = ({ children }) => {
 
   return (
   <GlobalContext.Provider value={{
+    playable: state.playable,
     correctLetters: state.correctLetters,
     wrongLetters: state.wrongLetters,
     showNotification: state.showNotification,
