@@ -13,4 +13,4 @@ But I extended it a bit, by adding a [random word generator](https://www.npmjs.c
 * `npm install or yarn`
 * Put your OwlBot API key in the `.env.example` file and rename it to `.env`
 * `npm run dev or yarn dev`
-* visit http://localhost:3000/
+* Visit http://localhost:3000/
