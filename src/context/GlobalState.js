@@ -1,9 +1,7 @@
 import React, { createContext, useReducer, useCallback } from 'react'
 import AppReducer from './AppReducer'
-
 import Owlbot from 'owlbot-js'
 import randomWords from 'random-words'
-
 
 // Initial state
 const initialState = {
@@ -41,7 +39,6 @@ export const GlobalProvider = ({ children }) => {
   }
 
   const setSelectedWord = useCallback(() => {
-    console.log(state.playable)
     if(state.playable === false) {
       const client = Owlbot(process.env.REACT_APP_OWLBOT_TOKEN)
       const word = randomWords()

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState'
-import { checkWin } from '../helpers/index'
+import { checkWin } from '../helpers'
 
 const Popup = () => {
   const {
-    setSelectedWord,
+    playable,
     correctLetters,
     wrongLetters, 
     selectedWord, 
@@ -13,18 +13,18 @@ const Popup = () => {
 
   let finalMessage = '';
   let finalMessageRevealWord = '';
-    
-  if( checkWin(correctLetters, wrongLetters, selectedWord.word) === 'win' ) {
-    finalMessage = 'Congratulations! You won! 😃';
-  } else if( checkWin(correctLetters, wrongLetters, selectedWord.word) === 'lose' ) {
-    finalMessage = 'Unfortunately you lost. 😕';
-    finalMessageRevealWord = `...the word was: ${selectedWord.word}`;
-  }
 
-  const PlayAgain = () => {
-    resetGame()
-    setSelectedWord()
+
+  if(playable === true && selectedWord !== undefined) {
+    if( checkWin(correctLetters, wrongLetters, selectedWord.word) === 'win' ) {
+      finalMessage = 'Congratulations! You won! 😃';
+    } else if( checkWin(correctLetters, wrongLetters, selectedWord.word) === 'lose' ) {
+      finalMessage = 'Unfortunately you lost. 😕';
+      finalMessageRevealWord = `...the word was: ${selectedWord.word}`;
+    }
   }
+    
+  
 
   return (
     <>
@@ -33,7 +33,7 @@ const Popup = () => {
         <div className="popup">
           <h2>{finalMessage}</h2>
           <h3>{finalMessageRevealWord}</h3>
-          <button type='button' onClick={ () => PlayAgain() }>Play Again</button>
+          <button type='button' onClick={ () => resetGame() }>Play Again</button>
         </div>
       </div>
     }
