@@ -4,6 +4,7 @@ import WrongLetters from './WrongLetters'
 import Word from './Word'
 import Popup from './Popup'
 import Notification from './Notification'
+import Hints from './Hints'
 
 import GetRandomWord from '../hooks/getRandomWord'
 import HandleKeyDown from '../hooks/handleKeyDown'
@@ -21,6 +22,7 @@ const Game = () => {
             </div>
             <Popup  />
             <Notification />
+            <Hints />
         </>
     )
 }

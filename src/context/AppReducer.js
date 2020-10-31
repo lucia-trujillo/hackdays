@@ -5,6 +5,11 @@ const AppReducer = (state, action) => {
         ...state,
         showNotification: action.payload
       }
+      case 'SET_HINTS':
+        return {
+          ...state,
+          showHints: action.payload
+        }
     case 'SET_SELECTED_WORD':
       return {
         ...state,
@@ -27,7 +32,8 @@ const AppReducer = (state, action) => {
         selectedWord: {},
         correctLetters: [],
         wrongLetters: [],
-        showNotification: false
+        showNotification: false,
+        showHints: false
       }
     default:
       return state;

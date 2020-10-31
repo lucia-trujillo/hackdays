@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 
-
 const Figure = () => {
   const { wrongLetters } = useContext(GlobalContext)
   const errors = wrongLetters.length

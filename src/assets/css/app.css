@@ -6,7 +6,7 @@
 }
   
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/body-background.jpg');
+    background: url('../img/body-background.jpg');
     background-position: center center;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -245,4 +245,35 @@ body {
   .notification-container.show {
     transform: translateY(-50px);
     visibility:visible; 
+  }
+
+  .hints-container {
+    position: absolute;
+    top: 20px;
+    right: 2rem;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .hints-container.show {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px 10px 0 0;
+    padding: 15px 20px;
+  }
+
+  .hints-container button {
+    cursor: pointer;
+    background-color: #fff;
+    color: #2980b9;
+    border: 0;
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+
+  .hints-container button:active {
+    transform: scale(0.98);
+  }
+  
+  .hints-container button:focus {
+    outline: 0;
   }

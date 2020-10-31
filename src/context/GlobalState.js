@@ -9,7 +9,8 @@ const initialState = {
   selectedWord: {},
   correctLetters: [],
   wrongLetters: [],
-  showNotification: false
+  showNotification: false,
+  showHints: false
 }
 
 // Create context
@@ -31,6 +32,19 @@ export const GlobalProvider = ({ children }) => {
       })
     }, 2000);
   }, [])
+
+  const toggleHints = useCallback(() => {
+    dispatch({ 
+      type: 'SET_HINTS',
+      payload: true
+    })
+    setTimeout(() => {
+      dispatch({ 
+        type: 'SET_HINTS',
+        payload: false
+      })
+    }, 5000);
+  }, [])
   
   const resetGame = () => {
     dispatch({ 
@@ -47,7 +61,15 @@ export const GlobalProvider = ({ children }) => {
           type: 'SET_SELECTED_WORD',
           payload: result
         })
-      })
+      }).catch((error) => {
+        console.log(error.response);
+        dispatch({ 
+          type: 'SET_SELECTED_WORD',
+          payload: {
+            word: word
+          }
+        })
+    })
     } 
   }, [state.playable])
 
@@ -72,7 +94,9 @@ export const GlobalProvider = ({ children }) => {
     wrongLetters: state.wrongLetters,
     showNotification: state.showNotification,
     selectedWord: state.selectedWord,
+    showHints: state.showHints,
     toggleNotification,
+    toggleHints,
     setSelectedWord,
     setCorrectLetters,
     setWrongLetters,
