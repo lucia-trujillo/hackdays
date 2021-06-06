@@ -11,15 +11,15 @@ const Hints = () => {
   
     return (
         <>
-        {wrongLetters.length > 2 && showHints === false &&
+        {wrongLetters.length > 2 && showHints === false && selectedWord.definitions &&
              <div className={`hints-container`}>
                 <button type="button" onClick={ () => toggleHints() }>Need some help?</button>
             </div>
         }
         
-        {wrongLetters.length > 2 && showHints === true && 
+        {wrongLetters.length > 2 && showHints === true && selectedWord.definitions && 
             <div className={`hints-container ${showHints ? 'show' : ''}`}>
-                {showHints === true && selectedWord.definitions &&
+                {showHints === true && selectedWord.definitions  && 
                 <>
                     <p>Type: {selectedWord.definitions[0].type}</p>
                     <p>Hint: {selectedWord.definitions[0].definition}</p>
