@@ -9,6 +9,7 @@ import Hints from './Hints'
 import GetRandomWord from '../hooks/getRandomWord'
 import HandleKeyDown from '../hooks/handleKeyDown'
 
+
 const Game = () => {
     GetRandomWord()
     HandleKeyDown()

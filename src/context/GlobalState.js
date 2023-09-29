@@ -1,6 +1,5 @@
-import React, { createContext, useReducer, useCallback } from 'react'
+import React, {createContext, useReducer, useCallback, useState} from 'react'
 import AppReducer from './AppReducer'
-import Owlbot from 'owlbot-js'
 import randomWords from 'random-words'
 
 // Initial state
@@ -54,22 +53,78 @@ export const GlobalProvider = ({ children }) => {
 
   const setSelectedWord = useCallback(() => {
     if(state.playable === false) {
-      const client = Owlbot(process.env.REACT_APP_OWLBOT_TOKEN)
-      const word = randomWords()
-      client.define(word).then((result) => {
-        dispatch({ 
-          type: 'SET_SELECTED_WORD',
-          payload: result
-        })
-      }).catch((error) => {
-        console.log(error.response);
+
+
+        const ikeaWords = [
+          "Billy",
+          "Hemnes",
+          "Poäng",
+          "Kallax",
+          "Ektorp",
+          "Lack",
+          "Malm",
+          "Karlstad",
+          "Rast",
+          "Brimnes",
+          "Hektar",
+          "Linnmon",
+          "Rens",
+          "Fjällbo",
+          "Svalsta",
+          "Gjöra",
+          "Lisabo",
+          "Ingolf",
+          "Granas",
+          "Strandmon",
+          "Kivik",
+          "Vittsjö",
+          "Norden",
+          "Stockholm",
+          "Tarva",
+          "Flisat",
+          "Bestå",
+          "Skubb",
+          "Sniglar",
+          "Nockeby",
+          "Algot",
+          "Torsby",
+          "Söderhamn",
+          "Tärnö",
+          "Tullsta",
+          "Eivor",
+          "Lillangen",
+          "Kungsbacka",
+          "Grimsbu",
+          "Valje",
+          "Äpplarö",
+          "Fredde",
+          "Variera",
+          "Råskog",
+          "Tived",
+          "Skarsta",
+          "Vittsjo",
+          "Grundtal",
+          "Sinnerlig",
+          "Tärnby"
+        ];
+
+
+
+        const getRandomWord = () => {
+          const randomIndex = Math.floor(Math.random() * ikeaWords.length);
+           return ikeaWords[randomIndex]
+        }
+
+
+      const word = getRandomWord()
+
         dispatch({ 
           type: 'SET_SELECTED_WORD',
           payload: {
             word: word
           }
         })
-    })
+
     } 
   }, [state.playable])
 
