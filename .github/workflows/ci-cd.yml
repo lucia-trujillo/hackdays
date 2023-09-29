@@ -22,8 +22,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-hangman-app:${{ github.sha }} .
-          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-hangman-app:${{ github.sha }}
+          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/hang-image:${{ github.sha }} .
+          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/hang-image:${{ github.sha }}
 
       - name: Deploy with Terraform
         run: |
