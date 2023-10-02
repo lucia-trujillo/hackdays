@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
+      contents: read
       id-token: write
 
     steps:
@@ -21,7 +21,7 @@ jobs:
         id: auth
         uses: google-github-actions/auth@v1
         with:
-          project_id: ${{ inputs.gcp_project_id }}
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
           workload_identity_provider: projects/513874589078/locations/global/workloadIdentityPools/jokers-pool/providers/jokers-provider
           service_account: jokers-gang2@${{ secrets.GCP_PROJECT_ID }}.iam.gserviceaccount.com
 
