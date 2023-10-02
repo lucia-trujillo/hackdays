@@ -108,7 +108,7 @@ export const GlobalProvider = ({ children }) => {
           "Tärnby"
         ];
 
-
+//comment
 
 
         const getRandomWord = () => {
