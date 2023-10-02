@@ -105,7 +105,8 @@ export const GlobalProvider = ({ children }) => {
           "Vittsjo",
           "Grundtal",
           "Sinnerlig",
-          "Tärnby"
+          "Tärnby",
+            "K"
         ];
 
 
