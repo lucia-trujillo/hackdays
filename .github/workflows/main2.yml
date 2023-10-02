@@ -50,9 +50,9 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  GAR_LOCATION: europe-west4
+  GAR_LOCATION: europe-west4/jokers-repository
   SERVICE: hang-image
-  REGION: YOUR_SERVICE_REGION # TODO: update Cloud Run service region
+  REGION: europe-west4
 
 jobs:
   deploy:
